@@ -31,19 +31,11 @@ const FirstAid = () => {
       image: 'https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=400&h=300&fit=crop'
     },
     {
-<<<<<<< HEAD
       id: 'bone-aid',
       title: t('bone.aid') || 'Bone Aid',
       urgency: 'medium',
       time: '10-15 minutes',
       description: t('bone.aid.description') || 'Immobilization techniques for fractures and bone injuries',
-=======
-      id: 'fracture-care',
-      title: t('fracture.care') || 'Fracture Care',
-      urgency: 'medium',
-      time: '10-15 minutes',
-      description: t('fracture.care.description') || 'Immobilization and stabilization techniques for bone fractures',
->>>>>>> b6a4ec145d169afe0dbfcb66f04d5af52b322048
       steps: [t('assess.injury') || 'Assess injury', t('prepare.materials') || 'Prepare materials', t('apply.splint') || 'Apply splint', t('secure.firmly') || 'Secure firmly'],
       category: t('orthopedic') || 'Orthopedic',
       image: 'https://images.unsplash.com/photo-1585435557343-3b092031d4c1?w=400&h=300&fit=crop'

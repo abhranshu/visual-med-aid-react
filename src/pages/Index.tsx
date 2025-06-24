@@ -80,12 +80,8 @@ const Index = () => {
               <img 
                 src="/lovable-uploads/5f55752e-fd69-47ce-9791-2c559f7ce1be.png" 
                 alt="Army Medical Corps Logo" 
-<<<<<<< HEAD
-                className="h-16 w-16 object-contain"
-                onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/placeholder.svg'; }}
-=======
                 className="h-20 w-20 object-contain"
->>>>>>> b6a4ec145d169afe0dbfcb66f04d5af52b322048
+                onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/placeholder.svg'; }}
               />
               <div className="bg-white/10 backdrop-blur-sm p-3 rounded-2xl border border-white/20">
                 <Shield className="h-10 w-10 text-white" />
