@@ -3,69 +3,72 @@ import React, { useState } from 'react';
 import { Shield, ArrowLeft, Clock, Users, AlertCircle, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '../contexts/LanguageContext';
+import LanguageToggle from '../components/LanguageToggle';
 
 const FirstAid = () => {
+  const { t } = useLanguage();
   const [selectedProcedure, setSelectedProcedure] = useState<string | null>(null);
 
   const procedures = [
     {
       id: 'cpr',
-      title: 'CPR Procedures',
+      title: t('cpr.procedures') || 'CPR Procedures',
       urgency: 'critical',
       time: '2-4 minutes',
-      description: 'Life-saving cardiopulmonary resuscitation techniques',
-      steps: ['Check responsiveness', 'Call for help', 'Check pulse', 'Begin chest compressions'],
-      category: 'Emergency',
+      description: t('cpr.description') || 'Life-saving cardiopulmonary resuscitation techniques',
+      steps: [t('check.responsiveness') || 'Check responsiveness', t('call.for.help') || 'Call for help', t('check.pulse') || 'Check pulse', t('begin.chest.compressions') || 'Begin chest compressions'],
+      category: t('emergency') || 'Emergency',
       image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop'
     },
     {
       id: 'wound-care',
-      title: 'Wound Care',
+      title: t('wound.care') || 'Wound Care',
       urgency: 'high',
       time: '5-10 minutes',
-      description: 'Proper cleaning and dressing of various wounds',
-      steps: ['Stop bleeding', 'Clean wound', 'Apply antiseptic', 'Dress wound'],
-      category: 'Trauma',
+      description: t('wound.care.description') || 'Proper cleaning and dressing of various wounds',
+      steps: [t('stop.bleeding') || 'Stop bleeding', t('clean.wound') || 'Clean wound', t('apply.antiseptic') || 'Apply antiseptic', t('dress.wound') || 'Dress wound'],
+      category: t('trauma') || 'Trauma',
       image: 'https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=400&h=300&fit=crop'
     },
     {
       id: 'splinting',
-      title: 'Emergency Splinting',
+      title: t('emergency.splinting') || 'Emergency Splinting',
       urgency: 'medium',
       time: '10-15 minutes',
-      description: 'Immobilization techniques for fractures',
-      steps: ['Assess injury', 'Prepare materials', 'Apply splint', 'Secure firmly'],
-      category: 'Orthopedic',
+      description: t('splinting.description') || 'Immobilization techniques for fractures',
+      steps: [t('assess.injury') || 'Assess injury', t('prepare.materials') || 'Prepare materials', t('apply.splint') || 'Apply splint', t('secure.firmly') || 'Secure firmly'],
+      category: t('orthopedic') || 'Orthopedic',
       image: 'https://images.unsplash.com/photo-1585435557343-3b092031d4c1?w=400&h=300&fit=crop'
     },
     {
       id: 'shock',
-      title: 'Shock Management',
+      title: t('shock.management') || 'Shock Management',
       urgency: 'critical',
       time: '1-3 minutes',
-      description: 'Recognition and treatment of shock symptoms',
-      steps: ['Assess vitals', 'Position patient', 'Maintain airway', 'Monitor closely'],
-      category: 'Emergency',
+      description: t('shock.description') || 'Recognition and treatment of shock symptoms',
+      steps: [t('assess.vitals') || 'Assess vitals', t('position.patient') || 'Position patient', t('maintain.airway') || 'Maintain airway', t('monitor.closely') || 'Monitor closely'],
+      category: t('emergency') || 'Emergency',
       image: 'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=400&h=300&fit=crop'
     },
     {
       id: 'burns',
-      title: 'Burn Treatment',
+      title: t('burn.treatment') || 'Burn Treatment',
       urgency: 'high',
       time: '5-15 minutes',
-      description: 'Immediate care for thermal and chemical burns',
-      steps: ['Cool the burn', 'Remove debris', 'Apply dressing', 'Pain management'],
-      category: 'Trauma',
+      description: t('burn.description') || 'Immediate care for thermal and chemical burns',
+      steps: [t('cool.the.burn') || 'Cool the burn', t('remove.debris') || 'Remove debris', t('apply.dressing') || 'Apply dressing', t('pain.management') || 'Pain management'],
+      category: t('trauma') || 'Trauma',
       image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=300&fit=crop'
     },
     {
       id: 'choking',
-      title: 'Choking Response',
+      title: t('choking.response') || 'Choking Response',
       urgency: 'critical',
       time: '1-2 minutes',
-      description: 'Heimlich maneuver and airway clearance',
-      steps: ['Assess airway', 'Back blows', 'Abdominal thrusts', 'Check mouth'],
-      category: 'Emergency',
+      description: t('choking.description') || 'Heimlich maneuver and airway clearance',
+      steps: [t('assess.airway') || 'Assess airway', t('back.blows') || 'Back blows', t('abdominal.thrusts') || 'Abdominal thrusts', t('check.mouth') || 'Check mouth'],
+      category: t('emergency') || 'Emergency',
       image: 'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=400&h=300&fit=crop'
     }
   ];
@@ -103,7 +106,7 @@ const FirstAid = () => {
       <header className="bg-gradient-to-r from-red-600 via-red-500 to-rose-600 text-white shadow-xl relative overflow-hidden">
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=1920&h=400&fit=crop" 
+            src="https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=1920&h=400&fit=crop&auto=format&q=80" 
             alt="Emergency medical background" 
             className="w-full h-full object-cover opacity-20"
           />
@@ -123,18 +126,21 @@ const FirstAid = () => {
                   <Shield className="h-8 w-8" />
                 </div>
                 <div>
-                  <h1 className="text-2xl font-bold">First Aid Guide</h1>
-                  <p className="text-red-100 text-sm">Emergency Medical Procedures</p>
+                  <h1 className="text-2xl font-bold">{t('first.aid') || 'First Aid Guide'}</h1>
+                  <p className="text-red-100 text-sm">{t('first.aid.desc') || 'Emergency Medical Procedures'}</p>
                 </div>
               </div>
             </div>
-            <Button 
-              variant="outline" 
-              className="bg-white/10 border-white/20 text-white hover:bg-white/20"
-              onClick={handleButtonClick}
-            >
-              Emergency: 102
-            </Button>
+            <div className="flex items-center space-x-3">
+              <LanguageToggle />
+              <Button 
+                variant="outline" 
+                className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+                onClick={handleButtonClick}
+              >
+                {t('emergency.contact') || 'Emergency: 102'}
+              </Button>
+            </div>
           </div>
         </div>
       </header>
@@ -144,21 +150,20 @@ const FirstAid = () => {
         <div className="text-center mb-12 relative">
           <div className="absolute inset-0 -z-10">
             <img 
-              src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=1200&h=400&fit=crop" 
+              src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=1200&h=400&fit=crop&auto=format&q=80" 
               alt="Medical equipment background" 
               className="w-full h-64 object-cover rounded-2xl opacity-10"
             />
           </div>
           <div className="inline-flex items-center bg-red-100 text-red-800 text-sm font-medium px-4 py-2 rounded-full mb-4">
             <AlertCircle className="h-4 w-4 mr-2" />
-            Critical Emergency Protocols
+            {t('critical.emergency.protocols') || 'Critical Emergency Protocols'}
           </div>
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            First Aid Procedures
+            {t('first.aid') || 'First Aid Procedures'}
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Essential life-saving procedures and emergency medical protocols for Army personnel. 
-            Master these techniques to provide effective immediate care in critical situations.
+            {t('first.aid.description') || 'Essential life-saving procedures and emergency medical protocols for Army personnel. Master these techniques to provide effective immediate care in critical situations.'}
           </p>
         </div>
 
@@ -170,8 +175,8 @@ const FirstAid = () => {
                 <Clock className="h-6 w-6 text-red-600" />
               </div>
               <div>
-                <div className="text-2xl font-bold text-gray-900">Golden Hour</div>
-                <div className="text-gray-600">Critical first 60 minutes</div>
+                <div className="text-2xl font-bold text-gray-900">{t('golden.hour') || 'Golden Hour'}</div>
+                <div className="text-gray-600">{t('critical.first.60.minutes') || 'Critical first 60 minutes'}</div>
               </div>
             </div>
           </div>
@@ -181,8 +186,8 @@ const FirstAid = () => {
                 <CheckCircle className="h-6 w-6 text-green-600" />
               </div>
               <div>
-                <div className="text-2xl font-bold text-gray-900">6 Procedures</div>
-                <div className="text-gray-600">Essential protocols</div>
+                <div className="text-2xl font-bold text-gray-900">{t('6.procedures') || '6 Procedures'}</div>
+                <div className="text-gray-600">{t('essential.protocols') || 'Essential protocols'}</div>
               </div>
             </div>
           </div>
@@ -192,8 +197,8 @@ const FirstAid = () => {
                 <Users className="h-6 w-6 text-blue-600" />
               </div>
               <div>
-                <div className="text-2xl font-bold text-gray-900">10K+ Lives</div>
-                <div className="text-gray-600">Potentially saved</div>
+                <div className="text-2xl font-bold text-gray-900">{t('10k.lives') || '10K+ Lives'}</div>
+                <div className="text-gray-600">{t('potentially.saved') || 'Potentially saved'}</div>
               </div>
             </div>
           </div>
@@ -236,7 +241,7 @@ const FirstAid = () => {
                 </p>
                 
                 <div className="space-y-2 mb-4">
-                  <div className="text-sm font-medium text-gray-700">Quick Steps:</div>
+                  <div className="text-sm font-medium text-gray-700">{t('quick.steps') || 'Quick Steps'}:</div>
                   {procedure.steps.slice(0, 2).map((step, index) => (
                     <div key={index} className="flex items-start space-x-2">
                       <div className="bg-red-100 text-red-600 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold mt-0.5">
@@ -247,7 +252,7 @@ const FirstAid = () => {
                   ))}
                   {procedure.steps.length > 2 && (
                     <div className="text-xs text-gray-500 pl-7">
-                      +{procedure.steps.length - 2} more steps
+                      +{procedure.steps.length - 2} {t('more.steps') || 'more steps'}
                     </div>
                   )}
                 </div>
@@ -264,7 +269,7 @@ const FirstAid = () => {
                       handleButtonClick();
                     }}
                   >
-                    View Full Guide
+                    {t('view.full.guide') || 'View Full Guide'}
                   </Button>
                 </div>
               </div>
@@ -276,16 +281,16 @@ const FirstAid = () => {
         <div className="mt-12 bg-gradient-to-r from-red-600 to-rose-600 rounded-2xl p-8 text-white text-center relative overflow-hidden">
           <div className="absolute inset-0">
             <img 
-              src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1200&h=300&fit=crop" 
+              src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1200&h=300&fit=crop&auto=format&q=80" 
               alt="Emergency background" 
               className="w-full h-full object-cover opacity-20"
             />
           </div>
           <div className="relative">
             <AlertCircle className="h-12 w-12 mx-auto mb-4" />
-            <h3 className="text-2xl font-bold mb-2">Emergency Situations</h3>
+            <h3 className="text-2xl font-bold mb-2">{t('emergency.situations') || 'Emergency Situations'}</h3>
             <p className="text-red-100 mb-6 max-w-2xl mx-auto">
-              In life-threatening emergencies, always call for immediate medical assistance while providing first aid.
+              {t('emergency.situations.description') || 'In life-threatening emergencies, always call for immediate medical assistance while providing first aid.'}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button 
@@ -293,14 +298,14 @@ const FirstAid = () => {
                 className="bg-white/10 border-white/20 text-white hover:bg-white/20"
                 onClick={handleButtonClick}
               >
-                Emergency: 102
+                {t('emergency') || 'Emergency'}: 102
               </Button>
               <Button 
                 variant="outline" 
                 className="bg-white/10 border-white/20 text-white hover:bg-white/20"
                 onClick={handleButtonClick}
               >
-                Army Medical: 1912
+                {t('army.medical') || 'Army Medical'}: 1912
               </Button>
             </div>
           </div>
