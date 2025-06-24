@@ -15,7 +15,8 @@ const FirstAid = () => {
       time: '2-4 minutes',
       description: 'Life-saving cardiopulmonary resuscitation techniques',
       steps: ['Check responsiveness', 'Call for help', 'Check pulse', 'Begin chest compressions'],
-      category: 'Emergency'
+      category: 'Emergency',
+      image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop'
     },
     {
       id: 'wound-care',
@@ -24,7 +25,8 @@ const FirstAid = () => {
       time: '5-10 minutes',
       description: 'Proper cleaning and dressing of various wounds',
       steps: ['Stop bleeding', 'Clean wound', 'Apply antiseptic', 'Dress wound'],
-      category: 'Trauma'
+      category: 'Trauma',
+      image: 'https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=400&h=300&fit=crop'
     },
     {
       id: 'splinting',
@@ -33,7 +35,8 @@ const FirstAid = () => {
       time: '10-15 minutes',
       description: 'Immobilization techniques for fractures',
       steps: ['Assess injury', 'Prepare materials', 'Apply splint', 'Secure firmly'],
-      category: 'Orthopedic'
+      category: 'Orthopedic',
+      image: 'https://images.unsplash.com/photo-1585435557343-3b092031d4c1?w=400&h=300&fit=crop'
     },
     {
       id: 'shock',
@@ -42,7 +45,8 @@ const FirstAid = () => {
       time: '1-3 minutes',
       description: 'Recognition and treatment of shock symptoms',
       steps: ['Assess vitals', 'Position patient', 'Maintain airway', 'Monitor closely'],
-      category: 'Emergency'
+      category: 'Emergency',
+      image: 'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=400&h=300&fit=crop'
     },
     {
       id: 'burns',
@@ -51,7 +55,8 @@ const FirstAid = () => {
       time: '5-15 minutes',
       description: 'Immediate care for thermal and chemical burns',
       steps: ['Cool the burn', 'Remove debris', 'Apply dressing', 'Pain management'],
-      category: 'Trauma'
+      category: 'Trauma',
+      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=300&fit=crop'
     },
     {
       id: 'choking',
@@ -60,7 +65,8 @@ const FirstAid = () => {
       time: '1-2 minutes',
       description: 'Heimlich maneuver and airway clearance',
       steps: ['Assess airway', 'Back blows', 'Abdominal thrusts', 'Check mouth'],
-      category: 'Emergency'
+      category: 'Emergency',
+      image: 'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=400&h=300&fit=crop'
     }
   ];
 
@@ -82,14 +88,34 @@ const FirstAid = () => {
     }
   };
 
+  const handleProcedureClick = (procedureId: string) => {
+    setSelectedProcedure(procedureId);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleButtonClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-red-50 to-rose-50">
       {/* Header */}
-      <header className="bg-gradient-to-r from-red-600 via-red-500 to-rose-600 text-white shadow-xl">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <header className="bg-gradient-to-r from-red-600 via-red-500 to-rose-600 text-white shadow-xl relative overflow-hidden">
+        <div className="absolute inset-0">
+          <img 
+            src="https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=1920&h=400&fit=crop" 
+            alt="Emergency medical background" 
+            className="w-full h-full object-cover opacity-20"
+          />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between py-6">
             <div className="flex items-center space-x-4">
-              <Link to="/" className="p-2 hover:bg-white/10 rounded-lg transition-colors">
+              <Link 
+                to="/" 
+                className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+                onClick={handleButtonClick}
+              >
                 <ArrowLeft className="h-6 w-6" />
               </Link>
               <div className="flex items-center space-x-3">
@@ -102,7 +128,11 @@ const FirstAid = () => {
                 </div>
               </div>
             </div>
-            <Button variant="outline" className="bg-white/10 border-white/20 text-white hover:bg-white/20">
+            <Button 
+              variant="outline" 
+              className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+              onClick={handleButtonClick}
+            >
               Emergency: 102
             </Button>
           </div>
@@ -111,7 +141,14 @@ const FirstAid = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Hero Section */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 relative">
+          <div className="absolute inset-0 -z-10">
+            <img 
+              src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=1200&h=400&fit=crop" 
+              alt="Medical equipment background" 
+              className="w-full h-64 object-cover rounded-2xl opacity-10"
+            />
+          </div>
           <div className="inline-flex items-center bg-red-100 text-red-800 text-sm font-medium px-4 py-2 rounded-full mb-4">
             <AlertCircle className="h-4 w-4 mr-2" />
             Critical Emergency Protocols
@@ -168,20 +205,28 @@ const FirstAid = () => {
             <div
               key={procedure.id}
               className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden group cursor-pointer"
-              onClick={() => setSelectedProcedure(procedure.id)}
+              onClick={() => handleProcedureClick(procedure.id)}
             >
-              <div className={`h-2 bg-gradient-to-r ${getUrgencyColor(procedure.urgency)}`}></div>
-              <div className="p-6">
-                <div className="flex items-start justify-between mb-4">
-                  <div className={`px-3 py-1 rounded-full text-xs font-medium border ${getUrgencyBadge(procedure.urgency)}`}>
+              <div className="relative h-48">
+                <img 
+                  src={procedure.image} 
+                  alt={procedure.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                />
+                <div className={`absolute inset-0 bg-gradient-to-t ${getUrgencyColor(procedure.urgency)} opacity-60`}></div>
+                <div className="absolute top-4 left-4">
+                  <div className={`px-3 py-1 rounded-full text-xs font-medium border bg-white/90 ${getUrgencyBadge(procedure.urgency)}`}>
                     {procedure.urgency.toUpperCase()}
                   </div>
-                  <div className="text-sm text-gray-500 flex items-center">
+                </div>
+                <div className="absolute top-4 right-4">
+                  <div className="text-sm text-white bg-black/30 backdrop-blur-sm px-3 py-1 rounded-full flex items-center">
                     <Clock className="h-4 w-4 mr-1" />
                     {procedure.time}
                   </div>
                 </div>
-                
+              </div>
+              <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors">
                   {procedure.title}
                 </h3>
@@ -214,6 +259,10 @@ const FirstAid = () => {
                   <Button 
                     size="sm" 
                     className="bg-red-600 hover:bg-red-700 text-white"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleButtonClick();
+                    }}
                   >
                     View Full Guide
                   </Button>
@@ -224,19 +273,36 @@ const FirstAid = () => {
         </div>
 
         {/* Emergency Contact Card */}
-        <div className="mt-12 bg-gradient-to-r from-red-600 to-rose-600 rounded-2xl p-8 text-white text-center">
-          <AlertCircle className="h-12 w-12 mx-auto mb-4" />
-          <h3 className="text-2xl font-bold mb-2">Emergency Situations</h3>
-          <p className="text-red-100 mb-6 max-w-2xl mx-auto">
-            In life-threatening emergencies, always call for immediate medical assistance while providing first aid.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button variant="outline" className="bg-white/10 border-white/20 text-white hover:bg-white/20">
-              Emergency: 102
-            </Button>
-            <Button variant="outline" className="bg-white/10 border-white/20 text-white hover:bg-white/20">
-              Army Medical: 1912
-            </Button>
+        <div className="mt-12 bg-gradient-to-r from-red-600 to-rose-600 rounded-2xl p-8 text-white text-center relative overflow-hidden">
+          <div className="absolute inset-0">
+            <img 
+              src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1200&h=300&fit=crop" 
+              alt="Emergency background" 
+              className="w-full h-full object-cover opacity-20"
+            />
+          </div>
+          <div className="relative">
+            <AlertCircle className="h-12 w-12 mx-auto mb-4" />
+            <h3 className="text-2xl font-bold mb-2">Emergency Situations</h3>
+            <p className="text-red-100 mb-6 max-w-2xl mx-auto">
+              In life-threatening emergencies, always call for immediate medical assistance while providing first aid.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button 
+                variant="outline" 
+                className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+                onClick={handleButtonClick}
+              >
+                Emergency: 102
+              </Button>
+              <Button 
+                variant="outline" 
+                className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+                onClick={handleButtonClick}
+              >
+                Army Medical: 1912
+              </Button>
+            </div>
           </div>
         </div>
       </div>

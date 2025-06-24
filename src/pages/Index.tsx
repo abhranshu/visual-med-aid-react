@@ -15,7 +15,8 @@ const Index = () => {
       icon: <Shield className="h-8 w-8" />,
       color: 'from-red-500 to-red-600',
       href: '/first-aid',
-      count: '25+ Procedures'
+      count: '25+ Procedures',
+      image: 'https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=600&h=400&fit=crop'
     },
     {
       id: 'medicines',
@@ -24,7 +25,8 @@ const Index = () => {
       icon: <Activity className="h-8 w-8" />,
       color: 'from-green-500 to-green-600',
       href: '/medicines',
-      count: '500+ Medicines'
+      count: '500+ Medicines',
+      image: 'https://images.unsplash.com/photo-1585435557343-3b092031d4c1?w=600&h=400&fit=crop'
     },
     {
       id: 'equipment',
@@ -33,7 +35,8 @@ const Index = () => {
       icon: <Stethoscope className="h-8 w-8" />,
       color: 'from-orange-500 to-orange-600',
       href: '/equipment',
-      count: '100+ Devices'
+      count: '100+ Devices',
+      image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop'
     },
     {
       id: 'emergency',
@@ -42,7 +45,8 @@ const Index = () => {
       icon: <AlertTriangle className="h-8 w-8" />,
       color: 'from-blue-500 to-blue-600',
       href: '/emergency',
-      count: '50+ Protocols'
+      count: '50+ Protocols',
+      image: 'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=600&h=400&fit=crop'
     }
   ];
 
@@ -52,11 +56,22 @@ const Index = () => {
     { icon: <MapPin className="h-6 w-6" />, label: 'Locations', value: '50+' }
   ];
 
+  const handleSearch = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       {/* Header */}
       <header className="relative overflow-hidden bg-gradient-to-r from-blue-900 via-blue-800 to-indigo-900">
         <div className="absolute inset-0 bg-black/20"></div>
+        <div className="absolute inset-0">
+          <img 
+            src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=1920&h=600&fit=crop" 
+            alt="Medical background" 
+            className="w-full h-full object-cover opacity-20"
+          />
+        </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
@@ -68,7 +83,11 @@ const Index = () => {
                 <p className="text-blue-200 text-sm">Comprehensive Medical Resource Platform</p>
               </div>
             </div>
-            <Button variant="outline" className="bg-white/10 border-white/20 text-white hover:bg-white/20">
+            <Button 
+              variant="outline" 
+              className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            >
               Emergency Contact
             </Button>
           </div>
@@ -78,6 +97,13 @@ const Index = () => {
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-indigo-600/5"></div>
+        <div className="absolute inset-0">
+          <img 
+            src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=1920&h=800&fit=crop" 
+            alt="Medical team" 
+            className="w-full h-full object-cover opacity-10"
+          />
+        </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-4 py-2 rounded-full mb-6">
             🇮🇳 Trusted by Indian Army Medical Corps
@@ -106,7 +132,10 @@ const Index = () => {
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full pl-14 pr-6 py-4 text-lg border-2 border-gray-200 rounded-2xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-200 bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-xl"
               />
-              <Button className="absolute right-2 top-2 bottom-2 px-6 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
+              <Button 
+                className="absolute right-2 top-2 bottom-2 px-6 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700"
+                onClick={handleSearch}
+              >
                 Search
               </Button>
             </div>
@@ -145,17 +174,27 @@ const Index = () => {
                 key={category.id}
                 to={category.href}
                 className="group relative overflow-hidden bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               >
-                <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
-                <div className="relative p-8">
-                  <div className="flex items-start justify-between mb-6">
-                    <div className={`p-4 rounded-2xl bg-gradient-to-br ${category.color} text-white shadow-lg`}>
-                      {category.icon}
-                    </div>
-                    <div className="text-sm font-medium text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src={category.image} 
+                    alt={category.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-60 group-hover:opacity-40 transition-opacity duration-300`}></div>
+                  <div className="absolute top-4 right-4">
+                    <div className="text-sm font-medium text-white bg-black/20 backdrop-blur-sm px-3 py-1 rounded-full">
                       {category.count}
                     </div>
                   </div>
+                  <div className="absolute bottom-4 left-4">
+                    <div className={`p-3 rounded-xl bg-white/20 backdrop-blur-sm text-white shadow-lg`}>
+                      {category.icon}
+                    </div>
+                  </div>
+                </div>
+                <div className="relative p-8">
                   <h4 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
                     {category.name}
                   </h4>
@@ -174,8 +213,15 @@ const Index = () => {
       </section>
 
       {/* Quick Access Section */}
-      <section className="py-20 bg-gradient-to-r from-gray-900 to-blue-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-gradient-to-r from-gray-900 to-blue-900 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <img 
+            src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=1920&h=600&fit=crop" 
+            alt="Medical equipment" 
+            className="w-full h-full object-cover opacity-10"
+          />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center text-white mb-12">
             <h3 className="text-3xl font-bold mb-4">Quick Access Portal</h3>
             <p className="text-xl text-blue-200">Navigate directly to critical medical resources</p>
@@ -186,6 +232,7 @@ const Index = () => {
                 key={category.id}
                 to={category.href}
                 className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 text-center hover:bg-white/20 transition-all duration-200 group"
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               >
                 <div className="text-white mb-3 flex justify-center group-hover:scale-110 transition-transform">
                   {category.icon}

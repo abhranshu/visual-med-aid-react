@@ -21,14 +21,29 @@ const Medicines = () => {
     return matchesSearch && matchesCategory;
   });
 
+  const handleButtonClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-green-50 to-emerald-50">
       {/* Header */}
-      <header className="bg-gradient-to-r from-green-600 via-green-500 to-emerald-600 text-white shadow-xl">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <header className="bg-gradient-to-r from-green-600 via-green-500 to-emerald-600 text-white shadow-xl relative overflow-hidden">
+        <div className="absolute inset-0">
+          <img 
+            src="https://images.unsplash.com/photo-1585435557343-3b092031d4c1?w=1920&h=400&fit=crop" 
+            alt="Medicine background" 
+            className="w-full h-full object-cover opacity-20"
+          />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between py-6">
             <div className="flex items-center space-x-4">
-              <Link to="/" className="p-2 hover:bg-white/10 rounded-lg transition-colors">
+              <Link 
+                to="/" 
+                className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+                onClick={handleButtonClick}
+              >
                 <ArrowLeft className="h-6 w-6" />
               </Link>
               <div className="flex items-center space-x-3">
@@ -45,7 +60,10 @@ const Medicines = () => {
               <Button
                 variant="outline"
                 size="sm"
-                onClick={() => setViewMode(viewMode === 'grid' ? 'list' : 'grid')}
+                onClick={() => {
+                  setViewMode(viewMode === 'grid' ? 'list' : 'grid');
+                  handleButtonClick();
+                }}
                 className="bg-white/10 border-white/20 text-white hover:bg-white/20"
               >
                 {viewMode === 'grid' ? <List className="h-4 w-4" /> : <Grid className="h-4 w-4" />}
@@ -53,7 +71,10 @@ const Medicines = () => {
               <Button
                 variant="outline"
                 size="sm"
-                onClick={() => setShowFilters(!showFilters)}
+                onClick={() => {
+                  setShowFilters(!showFilters);
+                  handleButtonClick();
+                }}
                 className="bg-white/10 border-white/20 text-white hover:bg-white/20"
               >
                 <Filter className="h-4 w-4 mr-2" />
@@ -66,7 +87,14 @@ const Medicines = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Hero Section */}
-        <div className="text-center mb-10">
+        <div className="text-center mb-10 relative">
+          <div className="absolute inset-0 -z-10">
+            <img 
+              src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=1200&h=300&fit=crop" 
+              alt="Pharmacy background" 
+              className="w-full h-48 object-cover rounded-2xl opacity-10"
+            />
+          </div>
           <div className="inline-flex items-center bg-green-100 text-green-800 text-sm font-medium px-4 py-2 rounded-full mb-4">
             Updated Database • Last Sync: Today
           </div>
@@ -133,6 +161,7 @@ const Medicines = () => {
               onClick={() => {
                 setSearchTerm('');
                 setSelectedCategory('all');
+                handleButtonClick();
               }}
               className="bg-green-600 hover:bg-green-700"
             >
