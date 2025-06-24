@@ -1,118 +1,144 @@
 
-import React, { useState } from 'react';
-import { Pill, Clock, AlertTriangle, Info, ChevronDown, ChevronUp } from 'lucide-react';
+import React from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Activity, Clock, AlertTriangle } from 'lucide-react';
 import { Medicine } from '../types/medicine';
 
 interface MedicineCardProps {
   medicine: Medicine;
+  viewMode?: 'grid' | 'list';
 }
 
-const MedicineCard: React.FC<MedicineCardProps> = ({ medicine }) => {
-  const [expanded, setExpanded] = useState(false);
-
+const MedicineCard: React.FC<MedicineCardProps> = ({ medicine, viewMode = 'grid' }) => {
   const getCategoryColor = (category: string) => {
-    const colors = {
-      painkiller: 'bg-red-100 text-red-800 border-red-200',
-      antibiotic: 'bg-green-100 text-green-800 border-green-200',
-      vitamin: 'bg-yellow-100 text-yellow-800 border-yellow-200',
-      antacid: 'bg-blue-100 text-blue-800 border-blue-200',
-      allergy: 'bg-purple-100 text-purple-800 border-purple-200',
-      default: 'bg-gray-100 text-gray-800 border-gray-200'
-    };
-    return colors[category as keyof typeof colors] || colors.default;
+    switch (category) {
+      case 'painkiller': return 'bg-red-100 text-red-800 border-red-200';
+      case 'antibiotic': return 'bg-blue-100 text-blue-800 border-blue-200';
+      case 'vitamin': return 'bg-green-100 text-green-800 border-green-200';
+      case 'antacid': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
+      case 'allergy': return 'bg-purple-100 text-purple-800 border-purple-200';
+      default: return 'bg-gray-100 text-gray-800 border-gray-200';
+    }
   };
 
+  const getCategoryIcon = (category: string) => {
+    switch (category) {
+      case 'painkiller': return '💊';
+      case 'antibiotic': return '🦠';
+      case 'vitamin': return '🌿';
+      case 'antacid': return '⚡';
+      case 'allergy': return '🤧';
+      default: return '💊';
+    }
+  };
+
+  if (viewMode === 'list') {
+    return (
+      <Card className="hover:shadow-lg transition-all duration-200 border border-gray-100">
+        <CardContent className="p-6">
+          <div className="flex items-start justify-between">
+            <div className="flex-1">
+              <div className="flex items-center space-x-3 mb-3">
+                <span className="text-2xl">{getCategoryIcon(medicine.category)}</span>
+                <div>
+                  <CardTitle className="text-lg text-gray-900">{medicine.name}</CardTitle>
+                  <p className="text-sm text-gray-500">{medicine.genericName}</p>
+                </div>
+              </div>
+              <p className="text-gray-600 mb-3 line-clamp-2">{medicine.description}</p>
+              <div className="flex items-center space-x-4 text-sm text-gray-500">
+                <div className="flex items-center space-x-1">
+                  <Clock className="h-4 w-4" />
+                  <span>{medicine.dosage}</span>
+                </div>
+                <div className="flex items-center space-x-1">
+                  <Activity className="h-4 w-4" />
+                  <span>{medicine.strength}</span>
+                </div>
+              </div>
+            </div>
+            <div className="ml-4">
+              <Badge className={`${getCategoryColor(medicine.category)} border`}>
+                {medicine.category}
+              </Badge>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    );
+  }
+
   return (
-    <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 overflow-hidden">
-      {/* Header */}
-      <div className="p-6 border-b border-gray-100">
-        <div className="flex items-start justify-between mb-3">
+    <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100 overflow-hidden group">
+      <div className="bg-gradient-to-r from-green-500 to-emerald-500 h-1"></div>
+      <CardHeader className="pb-4">
+        <div className="flex items-start justify-between">
           <div className="flex items-center space-x-3">
-            <div className="bg-blue-500 p-2 rounded-lg">
-              <Pill className="h-5 w-5 text-white" />
+            <div className="bg-green-100 p-2 rounded-lg">
+              <span className="text-xl">{getCategoryIcon(medicine.category)}</span>
             </div>
             <div>
-              <h3 className="text-xl font-bold text-gray-900">{medicine.name}</h3>
-              <p className="text-sm text-gray-600">{medicine.genericName}</p>
+              <CardTitle className="text-lg text-gray-900 group-hover:text-green-600 transition-colors">
+                {medicine.name}
+              </CardTitle>
+              <p className="text-sm text-gray-500">{medicine.genericName}</p>
             </div>
           </div>
-          <span className={`px-3 py-1 rounded-full text-xs font-medium border ${getCategoryColor(medicine.category)}`}>
+          <Badge className={`${getCategoryColor(medicine.category)} border text-xs`}>
             {medicine.category}
-          </span>
+          </Badge>
         </div>
-        <p className="text-gray-700 leading-relaxed">{medicine.description}</p>
-      </div>
-
-      {/* Quick Info */}
-      <div className="p-6 bg-gray-50">
-        <div className="grid grid-cols-2 gap-4">
-          <div className="flex items-center space-x-2">
-            <Clock className="h-4 w-4 text-blue-500" />
-            <div>
-              <p className="text-xs text-gray-600">Dosage</p>
-              <p className="text-sm font-medium text-gray-900">{medicine.dosage}</p>
-            </div>
+      </CardHeader>
+      
+      <CardContent className="pt-0">
+        <p className="text-gray-600 mb-4 leading-relaxed line-clamp-3">
+          {medicine.description}
+        </p>
+        
+        <div className="space-y-3 mb-4">
+          <div className="flex items-center justify-between text-sm">
+            <span className="text-gray-500">Dosage:</span>
+            <span className="font-medium text-gray-900">{medicine.dosage}</span>
           </div>
-          <div className="flex items-center space-x-2">
-            <Info className="h-4 w-4 text-green-500" />
-            <div>
-              <p className="text-xs text-gray-600">Strength</p>
-              <p className="text-sm font-medium text-gray-900">{medicine.strength}</p>
-            </div>
+          <div className="flex items-center justify-between text-sm">
+            <span className="text-gray-500">Strength:</span>
+            <span className="font-medium text-gray-900">{medicine.strength}</span>
           </div>
         </div>
-      </div>
-
-      {/* Expandable Section */}
-      <div className="px-6 pb-6">
-        <button
-          onClick={() => setExpanded(!expanded)}
-          className="w-full flex items-center justify-between py-3 text-left hover:bg-gray-50 rounded-lg px-3 transition-colors"
-        >
-          <span className="font-medium text-gray-900">Detailed Information</span>
-          {expanded ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
-        </button>
-
-        {expanded && (
-          <div className="mt-4 space-y-4 animate-fade-in">
-            <div>
-              <h4 className="font-semibold text-gray-900 mb-2 flex items-center">
-                <AlertTriangle className="h-4 w-4 text-orange-500 mr-2" />
-                Side Effects
-              </h4>
-              <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
-                {medicine.sideEffects.map((effect, index) => (
-                  <li key={index}>{effect}</li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-gray-900 mb-2">Uses</h4>
-              <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
-                {medicine.uses.map((use, index) => (
-                  <li key={index}>{use}</li>
-                ))}
-              </ul>
-            </div>
-
-            {medicine.warnings && medicine.warnings.length > 0 && (
-              <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                <h4 className="font-semibold text-red-900 mb-2 flex items-center">
-                  <AlertTriangle className="h-4 w-4 text-red-500 mr-2" />
-                  Important Warnings
-                </h4>
-                <ul className="list-disc list-inside text-sm text-red-800 space-y-1">
-                  {medicine.warnings.map((warning, index) => (
-                    <li key={index}>{warning}</li>
-                  ))}
-                </ul>
+        
+        <div className="space-y-2">
+          <div className="text-sm font-medium text-gray-700">Primary Uses:</div>
+          <div className="space-y-1">
+            {medicine.uses.slice(0, 2).map((use, index) => (
+              <div key={index} className="flex items-start space-x-2">
+                <div className="bg-green-100 text-green-600 rounded-full w-4 h-4 flex items-center justify-center text-xs font-bold mt-0.5">
+                  ✓
+                </div>
+                <div className="text-sm text-gray-600">{use}</div>
+              </div>
+            ))}
+            {medicine.uses.length > 2 && (
+              <div className="text-xs text-gray-500 pl-6">
+                +{medicine.uses.length - 2} more uses
               </div>
             )}
           </div>
+        </div>
+        
+        {medicine.warnings.length > 0 && (
+          <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+            <div className="flex items-center space-x-2 text-yellow-800">
+              <AlertTriangle className="h-4 w-4" />
+              <span className="text-sm font-medium">Important Warning</span>
+            </div>
+            <p className="text-sm text-yellow-700 mt-1 line-clamp-2">
+              {medicine.warnings[0]}
+            </p>
+          </div>
         )}
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 };
 
