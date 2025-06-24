@@ -72,7 +72,27 @@ const translations = {
     'category': 'Category',
     'no.medicines.found': 'No medicines found',
     'try.adjusting': 'Try adjusting your search terms or category filter to find what you\'re looking for.',
-    'clear.all.filters': 'Clear All Filters'
+    'clear.all.filters': 'Clear All Filters',
+    
+    // Equipment Page
+    'equipment.guide': 'Medical Equipment Guide',
+    'essential.equipment': 'Essential medical equipment used in Army healthcare',
+    'diagnostic.tools': 'Diagnostic Tools',
+    'diagnostic.desc': 'Stethoscopes, thermometers, and blood pressure monitors',
+    'surgical.instruments': 'Surgical Instruments',
+    'surgical.desc': 'Basic surgical tools and their proper usage',
+    'emergency.equipment': 'Emergency Equipment',
+    'emergency.equipment.desc': 'Defibrillators, oxygen tanks, and emergency kits',
+    
+    // Emergency Page
+    'emergency.procedures': 'Emergency Procedures',
+    'critical.emergency.protocols': 'Critical emergency protocols for Army medical situations',
+    'trauma.assessment': 'Trauma Assessment',
+    'trauma.desc': 'Primary and secondary survey protocols',
+    'mass.casualty': 'Mass Casualty Events',
+    'mass.casualty.desc': 'Triage and management of multiple casualties',
+    'combat.medicine': 'Combat Medicine',
+    'combat.medicine.desc': 'Field medicine under combat conditions'
   },
   hi: {
     // Header
@@ -134,7 +154,27 @@ const translations = {
     'category': 'श्रेणी',
     'no.medicines.found': 'कोई दवा नहीं मिली',
     'try.adjusting': 'आप जो खोज रहे हैं उसे खोजने के लिए अपने खोज शब्दों या श्रेणी फिल्टर को समायोजित करने का प्रयास करें।',
-    'clear.all.filters': 'सभी फिल्टर साफ़ करें'
+    'clear.all.filters': 'सभी फिल्टर साफ़ करें',
+    
+    // Equipment Page
+    'equipment.guide': 'चिकित्सा उपकरण गाइड',
+    'essential.equipment': 'सेना स्वास्थ्य सेवा में उपयोग होने वाले आवश्यक चिकित्सा उपकरण',
+    'diagnostic.tools': 'निदान उपकरण',
+    'diagnostic.desc': 'स्टेथोस्कोप, थर्मामीटर और रक्तचाप मॉनिटर',
+    'surgical.instruments': 'शल्य चिकित्सा उपकरण',
+    'surgical.desc': 'बुनियादी शल्य चिकित्सा उपकरण और उनका उचित उपयोग',
+    'emergency.equipment': 'आपातकालीन उपकरण',
+    'emergency.equipment.desc': 'डिफाइब्रिलेटर, ऑक्सीजन टैंक और आपातकालीन किट',
+    
+    // Emergency Page
+    'emergency.procedures': 'आपातकालीन प्रक्रियाएं',
+    'critical.emergency.protocols': 'सेना चिकित्सा स्थितियों के लिए महत्वपूर्ण आपातकालीन प्रोटोकॉल',
+    'trauma.assessment': 'आघात मूल्यांकन',
+    'trauma.desc': 'प्राथमिक और द्वितीयक सर्वेक्षण प्रोटोकॉल',
+    'mass.casualty': 'सामूहिक हताहत घटनाएं',
+    'mass.casualty.desc': 'कई हताहतों की छंटाई और प्रबंधन',
+    'combat.medicine': 'युद्धक चिकित्सा',
+    'combat.medicine.desc': 'युद्ध की स्थिति में फील्ड मेडिसिन'
   }
 };
 
