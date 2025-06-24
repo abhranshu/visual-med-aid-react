@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -33,28 +32,54 @@ const MedicineCard: React.FC<MedicineCardProps> = ({ medicine, viewMode = 'grid'
     }
   };
 
+  const getMedicineImage = (category: string, name: string) => {
+    switch (category) {
+      case 'painkiller':
+        return 'https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=400&h=200&fit=crop&auto=format';
+      case 'antibiotic':
+        return 'https://images.unsplash.com/photo-1585435557343-3b092031d4c1?w=400&h=200&fit=crop&auto=format';
+      case 'vitamin':
+        return 'https://images.unsplash.com/photo-1550572017-edd951b55104?w=400&h=200&fit=crop&auto=format';
+      case 'antacid':
+        return 'https://images.unsplash.com/photo-1576671081837-49000212a370?w=400&h=200&fit=crop&auto=format';
+      case 'allergy':
+        return 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=200&fit=crop&auto=format';
+      default:
+        return 'https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=400&h=200&fit=crop&auto=format';
+    }
+  };
+
   if (viewMode === 'list') {
     return (
       <Card className="hover:shadow-lg transition-all duration-200 border border-gray-100">
         <CardContent className="p-6">
           <div className="flex items-start justify-between">
-            <div className="flex-1">
-              <div className="flex items-center space-x-3 mb-3">
-                <span className="text-2xl">{getCategoryIcon(medicine.category)}</span>
-                <div>
-                  <CardTitle className="text-lg text-gray-900">{medicine.name}</CardTitle>
-                  <p className="text-sm text-gray-500">{medicine.genericName}</p>
-                </div>
+            <div className="flex items-start space-x-4 flex-1">
+              <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+                <img 
+                  src={getMedicineImage(medicine.category, medicine.name)} 
+                  alt={medicine.name}
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <p className="text-gray-600 mb-3 line-clamp-2">{medicine.description}</p>
-              <div className="flex items-center space-x-4 text-sm text-gray-500">
-                <div className="flex items-center space-x-1">
-                  <Clock className="h-4 w-4" />
-                  <span>{medicine.dosage}</span>
+              <div className="flex-1">
+                <div className="flex items-center space-x-3 mb-3">
+                  <span className="text-xl">{getCategoryIcon(medicine.category)}</span>
+                  <div>
+                    <CardTitle className="text-lg text-gray-900">{medicine.name}</CardTitle>
+                    <p className="text-sm text-gray-500">{medicine.genericName}</p>
+                  </div>
                 </div>
-                <div className="flex items-center space-x-1">
-                  <Activity className="h-4 w-4" />
-                  <span>{medicine.strength}</span>
+                <p className="text-gray-600 mb-3 line-clamp-2">{medicine.description}</p>
+                <div className="flex items-center space-x-4 text-sm text-gray-500">
+                  <div className="flex items-center space-x-1">
+                    <Clock className="h-4 w-4" />
+                    <span>{medicine.dosage}</span>
+                  </div>
+                  <div className="flex items-center space-x-1">
+                    <Activity className="h-4 w-4" />
+                    <span>{medicine.strength}</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -72,6 +97,19 @@ const MedicineCard: React.FC<MedicineCardProps> = ({ medicine, viewMode = 'grid'
   return (
     <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100 overflow-hidden group">
       <div className="bg-gradient-to-r from-green-500 to-emerald-500 h-1"></div>
+      <div className="relative h-32 overflow-hidden">
+        <img 
+          src={getMedicineImage(medicine.category, medicine.name)} 
+          alt={medicine.name}
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+        <div className="absolute top-2 right-2">
+          <Badge className={`${getCategoryColor(medicine.category)} border text-xs`}>
+            {medicine.category}
+          </Badge>
+        </div>
+      </div>
       <CardHeader className="pb-4">
         <div className="flex items-start justify-between">
           <div className="flex items-center space-x-3">
@@ -85,9 +123,6 @@ const MedicineCard: React.FC<MedicineCardProps> = ({ medicine, viewMode = 'grid'
               <p className="text-sm text-gray-500">{medicine.genericName}</p>
             </div>
           </div>
-          <Badge className={`${getCategoryColor(medicine.category)} border text-xs`}>
-            {medicine.category}
-          </Badge>
         </div>
       </CardHeader>
       
