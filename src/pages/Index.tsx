@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Search, Shield, Activity, Stethoscope, AlertTriangle, ArrowRight, Users, Award, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -82,6 +81,7 @@ const Index = () => {
                 src="/lovable-uploads/5f55752e-fd69-47ce-9791-2c559f7ce1be.png" 
                 alt="Army Medical Corps Logo" 
                 className="h-16 w-16 object-contain"
+                onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/placeholder.svg'; }}
               />
               <div className="bg-white/10 backdrop-blur-sm p-3 rounded-2xl border border-white/20">
                 <Shield className="h-10 w-10 text-white" />
@@ -191,6 +191,7 @@ const Index = () => {
                     src={category.image} 
                     alt={category.name}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/placeholder.svg'; }}
                   />
                   <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-60 group-hover:opacity-40 transition-opacity duration-300`}></div>
                   <div className="absolute top-4 right-4">
@@ -285,8 +286,6 @@ const Index = () => {
               <h4 className="font-semibold mb-4 text-blue-400">{t('contact')}</h4>
               <div className="space-y-2 text-gray-300">
                 <p>{t('emergency')}: 102</p>
-                <p>{t('support')}: medical@army.gov.in</p>
-                <p>© 2025 Indian Army Medical Corps</p>
               </div>
             </div>
           </div>

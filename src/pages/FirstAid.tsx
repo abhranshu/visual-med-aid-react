@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Shield, ArrowLeft, Clock, Users, AlertCircle, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -32,11 +31,11 @@ const FirstAid = () => {
       image: 'https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=400&h=300&fit=crop'
     },
     {
-      id: 'splinting',
-      title: t('emergency.splinting') || 'Emergency Splinting',
+      id: 'bone-aid',
+      title: t('bone.aid') || 'Bone Aid',
       urgency: 'medium',
       time: '10-15 minutes',
-      description: t('splinting.description') || 'Immobilization techniques for fractures',
+      description: t('bone.aid.description') || 'Immobilization techniques for fractures and bone injuries',
       steps: [t('assess.injury') || 'Assess injury', t('prepare.materials') || 'Prepare materials', t('apply.splint') || 'Apply splint', t('secure.firmly') || 'Secure firmly'],
       category: t('orthopedic') || 'Orthopedic',
       image: 'https://images.unsplash.com/photo-1585435557343-3b092031d4c1?w=400&h=300&fit=crop'
@@ -240,10 +239,18 @@ const FirstAid = () => {
                 <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors">
                   {procedure.title}
                 </h3>
-                
-                <p className="text-gray-600 mb-4 leading-relaxed">
-                  {procedure.description}
-                </p>
+                {procedure.id === 'bone-aid' ? (
+                  <>
+                    <p className="text-sm text-yellow-700 mb-2 font-medium">
+                      Bone Aid is your trusted companion for fracture care and bone injury recovery
+                    </p>
+                    <p className="mb-4 leading-relaxed text-black font-normal"></p>
+                  </>
+                ) : (
+                  <p className="text-gray-600 mb-4 leading-relaxed">
+                    {procedure.description}
+                  </p>
+                )}
                 
                 <div className="space-y-2 mb-4">
                   <div className="text-sm font-medium text-gray-700">{t('quick.steps') || 'Quick Steps'}:</div>
@@ -271,7 +278,11 @@ const FirstAid = () => {
                     className="bg-red-600 hover:bg-red-700 text-white"
                     onClick={(e) => {
                       e.stopPropagation();
-                      handleButtonClick();
+                      if (procedure.id === 'bone-aid') {
+                        window.location.href = '/video';
+                      } else {
+                        handleButtonClick();
+                      }
                     }}
                   >
                     {t('view.full.guide') || 'View Full Guide'}
