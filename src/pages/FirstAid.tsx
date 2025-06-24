@@ -121,6 +121,11 @@ const FirstAid = () => {
               >
                 <ArrowLeft className="h-6 w-6" />
               </Link>
+              <img 
+                src="/lovable-uploads/5f55752e-fd69-47ce-9791-2c559f7ce1be.png" 
+                alt="Army Medical Corps Logo" 
+                className="h-12 w-12 object-contain"
+              />
               <div className="flex items-center space-x-3">
                 <div className="bg-white/10 backdrop-blur-sm p-3 rounded-xl border border-white/20">
                   <Shield className="h-8 w-8" />

@@ -78,6 +78,11 @@ const Index = () => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
+              <img 
+                src="/lovable-uploads/5f55752e-fd69-47ce-9791-2c559f7ce1be.png" 
+                alt="Army Medical Corps Logo" 
+                className="h-16 w-16 object-contain"
+              />
               <div className="bg-white/10 backdrop-blur-sm p-3 rounded-2xl border border-white/20">
                 <Shield className="h-10 w-10 text-white" />
               </div>
