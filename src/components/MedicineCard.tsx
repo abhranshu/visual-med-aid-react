@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -36,17 +35,17 @@ const MedicineCard: React.FC<MedicineCardProps> = ({ medicine, viewMode = 'grid'
   const getMedicineImage = (category: string, name: string) => {
     switch (category) {
       case 'painkiller':
-        return 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=200&fit=crop&auto=format&q=80';
+        return 'https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=400&h=200&fit=crop&auto=format';
       case 'antibiotic':
-        return 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=200&fit=crop&auto=format&q=80';
+        return 'https://images.unsplash.com/photo-1585435557343-3b092031d4c1?w=400&h=200&fit=crop&auto=format';
       case 'vitamin':
-        return 'https://images.unsplash.com/photo-1550572017-edd951b55104?w=400&h=200&fit=crop&auto=format&q=80';
+        return 'https://images.unsplash.com/photo-1550572017-edd951b55104?w=400&h=200&fit=crop&auto=format';
       case 'antacid':
-        return 'https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=400&h=200&fit=crop&auto=format&q=80';
+        return 'https://images.unsplash.com/photo-1576671081837-49000212a370?w=400&h=200&fit=crop&auto=format';
       case 'allergy':
-        return 'https://images.unsplash.com/photo-1576671081837-49000212a370?w=400&h=200&fit=crop&auto=format&q=80';
+        return 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=200&fit=crop&auto=format';
       default:
-        return 'https://images.unsplash.com/photo-1585435557343-3b092031d4c1?w=400&h=200&fit=crop&auto=format&q=80';
+        return 'https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=400&h=200&fit=crop&auto=format';
     }
   };
 

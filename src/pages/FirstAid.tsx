@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Shield, ArrowLeft, Clock, Users, AlertCircle, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -35,7 +36,7 @@ const FirstAid = () => {
       title: t('fracture.care') || 'Fracture Care',
       urgency: 'medium',
       time: '10-15 minutes',
-      description: t('fracture.care.description') || 'Immobilization techniques for fractures',
+      description: t('fracture.care.description') || 'Immobilization and stabilization techniques for bone fractures',
       steps: [t('assess.injury') || 'Assess injury', t('prepare.materials') || 'Prepare materials', t('apply.splint') || 'Apply splint', t('secure.firmly') || 'Secure firmly'],
       category: t('orthopedic') || 'Orthopedic',
       image: 'https://images.unsplash.com/photo-1585435557343-3b092031d4c1?w=400&h=300&fit=crop'
