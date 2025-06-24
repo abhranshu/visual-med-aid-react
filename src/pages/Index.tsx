@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '../contexts/LanguageContext';
 import LanguageToggle from '../components/LanguageToggle';
+import { medicines } from '../data/medicineData';
 
 const Index = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
   const { t } = useLanguage();
 
   const categories = [
@@ -28,7 +30,7 @@ const Index = () => {
       color: 'from-green-500 to-green-600',
       href: '/medicines',
       count: `500+ ${t('medicines')}`,
-      image: 'https://images.unsplash.com/photo-1585435557343-3b092031d4c1?w=800&h=600&fit=crop&auto=format&q=80'
+      image: 'https://plus.unsplash.com/premium_photo-1672759455444-20473f74838b?q=80&w=701&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
     },
     {
       id: 'equipment',
@@ -48,7 +50,7 @@ const Index = () => {
       color: 'from-blue-500 to-blue-600',
       href: '/emergency',
       count: `50+ ${t('protocols')}`,
-      image: 'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&h=600&fit=crop&auto=format&q=80'
+      image: 'https://images.pexels.com/photos/9410628/pexels-photo-9410628.jpeg'
     }
   ];
 
@@ -59,6 +61,16 @@ const Index = () => {
   ];
 
   const handleSearch = () => {
+    if (searchTerm.trim() === '') {
+      setSearchResults([]);
+      return;
+    }
+    const results = medicines.filter(med =>
+      med.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      med.genericName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      med.description.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setSearchResults(results);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -149,6 +161,24 @@ const Index = () => {
                 {t('search')}
               </Button>
             </div>
+            {/* Medicine Search Results */}
+            {searchResults.length > 0 && (
+              <div className="mt-6 bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
+                <h3 className="text-xl font-bold mb-4 text-gray-900">{t('medicines.found')}: {searchResults.length}</h3>
+                <ul className="divide-y divide-gray-200">
+                  {searchResults.map((med) => (
+                    <li key={med.id} className="py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+                      <div>
+                        <div className="font-semibold text-blue-800">{med.name}</div>
+                        <div className="text-sm text-gray-500">{med.genericName}</div>
+                        <div className="text-gray-700 text-sm line-clamp-2">{med.description}</div>
+                      </div>
+                      <Link to={`/medicines`} className="text-blue-600 hover:underline text-sm font-medium mt-2 md:mt-0">{t('view.full.guide') || 'View Full Guide'}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
 
           {/* Stats */}

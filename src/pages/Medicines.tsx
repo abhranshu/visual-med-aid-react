@@ -34,7 +34,7 @@ const Medicines = () => {
       <header className="bg-gradient-to-r from-green-600 via-green-500 to-emerald-600 text-white shadow-xl relative overflow-hidden">
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1585435557343-3b092031d4c1?w=1920&h=400&fit=crop&auto=format&q=80" 
+            src="https://images.unsplash.com/photo-1541797873665-6d4cc148885f?q=80&w=2031&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
             alt="Medicine background" 
             className="w-full h-full object-cover opacity-20"
           />
@@ -99,7 +99,7 @@ const Medicines = () => {
         <div className="text-center mb-10 relative">
           <div className="absolute inset-0 -z-10">
             <img 
-              src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=1200&h=300&fit=crop&auto=format&q=80" 
+              src="https://images.unsplash.com/photo-1545987796-200677ee1011?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
               alt="Pharmacy background" 
               className="w-full h-48 object-cover rounded-2xl opacity-10"
             />
