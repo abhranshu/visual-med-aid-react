@@ -12,6 +12,7 @@ import Emergency from "./pages/Emergency";
 import NotFound from "./pages/NotFound";
 import VideoPage from "./pages/Video";
 import BoneAid from "./pages/BoneAid";
+import BoneAidVideo from "./pages/BoneAidVideo";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ const App = () => (
             <Route path="/emergency" element={<Emergency />} />
             <Route path="/video" element={<VideoPage />} />
             <Route path="/bone-aid" element={<BoneAid />} />
+            <Route path="/bone-aid-video" element={<BoneAidVideo />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

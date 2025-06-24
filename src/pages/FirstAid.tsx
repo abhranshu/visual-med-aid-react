@@ -99,6 +99,10 @@ const FirstAid = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleBoneAidClick = () => {
+    window.location.href = '/bone-aid-video';
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-red-50 to-rose-50">
       {/* Header */}
@@ -279,7 +283,7 @@ const FirstAid = () => {
                     onClick={(e) => {
                       e.stopPropagation();
                       if (procedure.id === 'bone-aid') {
-                        window.location.href = '/video';
+                        handleBoneAidClick();
                       } else {
                         handleButtonClick();
                       }
