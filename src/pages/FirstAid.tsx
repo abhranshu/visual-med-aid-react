@@ -18,7 +18,7 @@ const FirstAid = () => {
       description: t('cpr.description') || 'Life-saving cardiopulmonary resuscitation techniques',
       steps: [t('check.responsiveness') || 'Check responsiveness', t('call.for.help') || 'Call for help', t('check.pulse') || 'Check pulse', t('begin.chest.compressions') || 'Begin chest compressions'],
       category: t('emergency') || 'Emergency',
-      image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop'
+      image: 'https://media.defense.gov/2022/Jan/11/2002920024/2000/2000/0/211109-F-BD538-1043.JPG'
     },
     {
       id: 'wound-care',
@@ -38,7 +38,7 @@ const FirstAid = () => {
       description: t('bone.aid.description') || 'Immobilization techniques for fractures and bone injuries',
       steps: [t('assess.injury') || 'Assess injury', t('prepare.materials') || 'Prepare materials', t('apply.splint') || 'Apply splint', t('secure.firmly') || 'Secure firmly'],
       category: t('orthopedic') || 'Orthopedic',
-      image: 'https://images.unsplash.com/photo-1585435557343-3b092031d4c1?w=400&h=300&fit=crop'
+      image: 'https://lfafirstresponse.com.au/wp-content/uploads/2022/06/Guide-to-First-Aid-For-Fractures.png'
     },
     {
       id: 'shock',
@@ -48,7 +48,7 @@ const FirstAid = () => {
       description: t('shock.description') || 'Recognition and treatment of shock symptoms',
       steps: [t('assess.vitals') || 'Assess vitals', t('position.patient') || 'Position patient', t('maintain.airway') || 'Maintain airway', t('monitor.closely') || 'Monitor closely'],
       category: t('emergency') || 'Emergency',
-      image: 'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=400&h=300&fit=crop'
+      image: 'https://www.eliteclinicalstudies.com/wp-content/uploads/2023/12/Heartburn-Research.jpg'
     },
     {
       id: 'burns',
@@ -58,7 +58,7 @@ const FirstAid = () => {
       description: t('burn.description') || 'Immediate care for thermal and chemical burns',
       steps: [t('cool.the.burn') || 'Cool the burn', t('remove.debris') || 'Remove debris', t('apply.dressing') || 'Apply dressing', t('pain.management') || 'Pain management'],
       category: t('trauma') || 'Trauma',
-      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=300&fit=crop'
+      image: 'https://images.unsplash.com/photo-1527617795716-a6635a1929ef?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
     },
     {
       id: 'choking',
@@ -241,7 +241,7 @@ const FirstAid = () => {
                 </h3>
                 {procedure.id === 'bone-aid' ? (
                   <>
-                    <p className="text-sm text-yellow-700 mb-2 font-medium">
+                    <p className="text-sm text-gray-700 mb-2 font-medium">
                       Bone Aid is your trusted companion for fracture care and bone injury recovery
                     </p>
                     <p className="mb-4 leading-relaxed text-black font-normal"></p>
