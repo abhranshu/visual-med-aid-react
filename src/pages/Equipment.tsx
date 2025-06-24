@@ -19,33 +19,35 @@ const Equipment = () => {
       <header className="bg-gradient-to-r from-orange-600 via-orange-500 to-amber-600 text-white shadow-xl relative overflow-hidden">
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1920&h=400&fit=crop&auto=format&q=80" 
+            src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1920&h=400&fit=crop&auto=format&q=90" 
             alt="Medical equipment background" 
-            className="w-full h-full object-cover opacity-20"
+            className="w-full h-full object-cover opacity-30"
           />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between py-6">
-            <div className="flex items-center space-x-4">
-              <Link 
-                to="/" 
-                className="p-2 hover:bg-white/10 rounded-lg transition-colors"
-                onClick={handleButtonClick}
-              >
-                <ArrowLeft className="h-6 w-6" />
-              </Link>
-              <img 
-                src="/lovable-uploads/5f55752e-fd69-47ce-9791-2c559f7ce1be.png" 
-                alt="Army Medical Corps Logo" 
-                className="h-12 w-12 object-contain"
-              />
-              <div className="flex items-center space-x-3">
-                <div className="bg-white/10 backdrop-blur-sm p-3 rounded-xl border border-white/20">
-                  <Stethoscope className="h-8 w-8" />
-                </div>
-                <div>
-                  <h1 className="text-2xl font-bold">{t('medical.equipment')}</h1>
-                  <p className="text-orange-100 text-sm">{t('essential.equipment')}</p>
+            <div className="flex items-center justify-center flex-1">
+              <div className="flex items-center space-x-6">
+                <Link 
+                  to="/" 
+                  className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+                  onClick={handleButtonClick}
+                >
+                  <ArrowLeft className="h-6 w-6" />
+                </Link>
+                <img 
+                  src="/lovable-uploads/5f55752e-fd69-47ce-9791-2c559f7ce1be.png" 
+                  alt="Army Medical Corps Logo" 
+                  className="h-16 w-16 object-contain"
+                />
+                <div className="flex items-center space-x-3">
+                  <div className="bg-white/10 backdrop-blur-sm p-3 rounded-xl border border-white/20">
+                    <Stethoscope className="h-8 w-8" />
+                  </div>
+                  <div>
+                    <h1 className="text-2xl font-bold">{t('medical.equipment')}</h1>
+                    <p className="text-orange-100 text-sm">{t('essential.equipment')}</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -68,9 +70,9 @@ const Equipment = () => {
         <div className="text-center mb-12 relative">
           <div className="absolute inset-0 -z-10">
             <img 
-              src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=1200&h=300&fit=crop&auto=format&q=80" 
+              src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=1200&h=300&fit=crop&auto=format&q=90" 
               alt="Medical equipment background" 
-              className="w-full h-48 object-cover rounded-2xl opacity-10"
+              className="w-full h-48 object-cover rounded-2xl opacity-15"
             />
           </div>
           <div className="inline-flex items-center bg-orange-100 text-orange-800 text-sm font-medium px-4 py-2 rounded-full mb-4">

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Search, Shield, Activity, Stethoscope, AlertTriangle, ArrowRight, Users, Award, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -67,21 +66,21 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       {/* Header */}
       <header className="relative overflow-hidden bg-gradient-to-r from-blue-900 via-blue-800 to-indigo-900">
-        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="absolute inset-0 bg-black/10"></div>
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=1920&h=600&fit=crop&auto=format&q=80" 
+            src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1920&h=600&fit=crop&auto=format&q=90" 
             alt="Medical background" 
-            className="w-full h-full object-cover opacity-20"
+            className="w-full h-full object-cover opacity-30"
           />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-6">
               <img 
                 src="/lovable-uploads/5f55752e-fd69-47ce-9791-2c559f7ce1be.png" 
                 alt="Army Medical Corps Logo" 
-                className="h-16 w-16 object-contain"
+                className="h-20 w-20 object-contain"
               />
               <div className="bg-white/10 backdrop-blur-sm p-3 rounded-2xl border border-white/20">
                 <Shield className="h-10 w-10 text-white" />
@@ -110,9 +109,9 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-indigo-600/5"></div>
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=1920&h=800&fit=crop&auto=format&q=80" 
+            src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1920&h=800&fit=crop&auto=format&q=90" 
             alt="Medical team" 
-            className="w-full h-full object-cover opacity-10"
+            className="w-full h-full object-cover opacity-15"
           />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

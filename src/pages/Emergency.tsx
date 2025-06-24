@@ -19,33 +19,35 @@ const Emergency = () => {
       <header className="bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 text-white shadow-xl relative overflow-hidden">
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=1920&h=400&fit=crop&auto=format&q=80" 
+            src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1920&h=400&fit=crop&auto=format&q=90" 
             alt="Emergency medical background" 
-            className="w-full h-full object-cover opacity-20"
+            className="w-full h-full object-cover opacity-30"
           />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between py-6">
-            <div className="flex items-center space-x-4">
-              <Link 
-                to="/" 
-                className="p-2 hover:bg-white/10 rounded-lg transition-colors"
-                onClick={handleButtonClick}
-              >
-                <ArrowLeft className="h-6 w-6" />
-              </Link>
-              <img 
-                src="/lovable-uploads/5f55752e-fd69-47ce-9791-2c559f7ce1be.png" 
-                alt="Army Medical Corps Logo" 
-                className="h-12 w-12 object-contain"
-              />
-              <div className="flex items-center space-x-3">
-                <div className="bg-white/10 backdrop-blur-sm p-3 rounded-xl border border-white/20">
-                  <AlertTriangle className="h-8 w-8" />
-                </div>
-                <div>
-                  <h1 className="text-2xl font-bold">{t('emergency.procedures')}</h1>
-                  <p className="text-blue-100 text-sm">{t('critical.emergency.protocols')}</p>
+            <div className="flex items-center justify-center flex-1">
+              <div className="flex items-center space-x-6">
+                <Link 
+                  to="/" 
+                  className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+                  onClick={handleButtonClick}
+                >
+                  <ArrowLeft className="h-6 w-6" />
+                </Link>
+                <img 
+                  src="/lovable-uploads/5f55752e-fd69-47ce-9791-2c559f7ce1be.png" 
+                  alt="Army Medical Corps Logo" 
+                  className="h-16 w-16 object-contain"
+                />
+                <div className="flex items-center space-x-3">
+                  <div className="bg-white/10 backdrop-blur-sm p-3 rounded-xl border border-white/20">
+                    <AlertTriangle className="h-8 w-8" />
+                  </div>
+                  <div>
+                    <h1 className="text-2xl font-bold">{t('emergency.procedures')}</h1>
+                    <p className="text-blue-100 text-sm">{t('critical.emergency.protocols')}</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -68,9 +70,9 @@ const Emergency = () => {
         <div className="text-center mb-12 relative">
           <div className="absolute inset-0 -z-10">
             <img 
-              src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=1200&h=300&fit=crop&auto=format&q=80" 
+              src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200&h=300&fit=crop&auto=format&q=90" 
               alt="Emergency medical background" 
-              className="w-full h-48 object-cover rounded-2xl opacity-10"
+              className="w-full h-48 object-cover rounded-2xl opacity-15"
             />
           </div>
           <div className="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-4 py-2 rounded-full mb-4">
