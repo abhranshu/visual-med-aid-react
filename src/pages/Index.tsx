@@ -3,57 +3,60 @@ import React, { useState } from 'react';
 import { Search, Shield, Activity, Stethoscope, AlertTriangle, ArrowRight, Users, Award, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '../contexts/LanguageContext';
+import LanguageToggle from '../components/LanguageToggle';
 
 const Index = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const { t } = useLanguage();
 
   const categories = [
     {
       id: 'first-aid',
-      name: 'First Aid',
-      description: 'Essential emergency medical procedures and protocols',
+      name: t('first.aid'),
+      description: t('first.aid.desc'),
       icon: <Shield className="h-8 w-8" />,
       color: 'from-red-500 to-red-600',
       href: '/first-aid',
-      count: '25+ Procedures',
-      image: 'https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=600&h=400&fit=crop'
+      count: `25+ ${t('procedures')}`,
+      image: 'https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=800&h=600&fit=crop&auto=format&q=80'
     },
     {
       id: 'medicines',
-      name: 'Medicine Database',
-      description: 'Comprehensive pharmaceutical reference guide',
+      name: t('medicine.database'),
+      description: t('medicine.database.desc'),
       icon: <Activity className="h-8 w-8" />,
       color: 'from-green-500 to-green-600',
       href: '/medicines',
-      count: '500+ Medicines',
-      image: 'https://images.unsplash.com/photo-1585435557343-3b092031d4c1?w=600&h=400&fit=crop'
+      count: `500+ ${t('medicines')}`,
+      image: 'https://images.unsplash.com/photo-1585435557343-3b092031d4c1?w=800&h=600&fit=crop&auto=format&q=80'
     },
     {
       id: 'equipment',
-      name: 'Medical Equipment',
-      description: 'Essential medical devices and their usage',
+      name: t('medical.equipment'),
+      description: t('medical.equipment.desc'),
       icon: <Stethoscope className="h-8 w-8" />,
       color: 'from-orange-500 to-orange-600',
       href: '/equipment',
-      count: '100+ Devices',
-      image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop'
+      count: `100+ ${t('devices')}`,
+      image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop&auto=format&q=80'
     },
     {
       id: 'emergency',
-      name: 'Emergency Protocols',
-      description: 'Critical response procedures for urgent situations',
+      name: t('emergency.protocols'),
+      description: t('emergency.protocols.desc'),
       icon: <AlertTriangle className="h-8 w-8" />,
       color: 'from-blue-500 to-blue-600',
       href: '/emergency',
-      count: '50+ Protocols',
-      image: 'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=600&h=400&fit=crop'
+      count: `50+ ${t('protocols')}`,
+      image: 'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&h=600&fit=crop&auto=format&q=80'
     }
   ];
 
   const stats = [
-    { icon: <Users className="h-6 w-6" />, label: 'Active Users', value: '10K+' },
-    { icon: <Award className="h-6 w-6" />, label: 'Medical Units', value: '500+' },
-    { icon: <MapPin className="h-6 w-6" />, label: 'Locations', value: '50+' }
+    { icon: <Users className="h-6 w-6" />, label: t('active.users'), value: '10K+' },
+    { icon: <Award className="h-6 w-6" />, label: t('medical.units'), value: '500+' },
+    { icon: <MapPin className="h-6 w-6" />, label: t('locations'), value: '50+' }
   ];
 
   const handleSearch = () => {
@@ -67,7 +70,7 @@ const Index = () => {
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=1920&h=600&fit=crop" 
+            src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=1920&h=600&fit=crop&auto=format&q=80" 
             alt="Medical background" 
             className="w-full h-full object-cover opacity-20"
           />
@@ -79,17 +82,20 @@ const Index = () => {
                 <Shield className="h-10 w-10 text-white" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-white">Army Medicine Guide</h1>
-                <p className="text-blue-200 text-sm">Comprehensive Medical Resource Platform</p>
+                <h1 className="text-2xl font-bold text-white">{t('army.medicine.guide')}</h1>
+                <p className="text-blue-200 text-sm">{t('comprehensive.medical.resource')}</p>
               </div>
             </div>
-            <Button 
-              variant="outline" 
-              className="bg-white/10 border-white/20 text-white hover:bg-white/20"
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            >
-              Emergency Contact
-            </Button>
+            <div className="flex items-center space-x-3">
+              <LanguageToggle />
+              <Button 
+                variant="outline" 
+                className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              >
+                {t('emergency.contact')}
+              </Button>
+            </div>
           </div>
         </div>
       </header>
@@ -99,24 +105,23 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-indigo-600/5"></div>
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=1920&h=800&fit=crop" 
+            src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=1920&h=800&fit=crop&auto=format&q=80" 
             alt="Medical team" 
             className="w-full h-full object-cover opacity-10"
           />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-4 py-2 rounded-full mb-6">
-            🇮🇳 Trusted by Indian Army Medical Corps
+            {t('trusted.by.army')}
           </div>
           <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-            Advanced Medical
+            {t('advanced.medical')}
             <span className="block bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-              Knowledge System
+              {t('knowledge.system')}
             </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-10 leading-relaxed">
-            Empowering Army medical personnel with instant access to critical medical information, 
-            protocols, and emergency procedures for enhanced battlefield healthcare.
+            {t('empowering.army')}
           </p>
           
           {/* Search */}
@@ -127,7 +132,7 @@ const Index = () => {
               </div>
               <input
                 type="text"
-                placeholder="Search medicines, procedures, equipment..."
+                placeholder={t('search.placeholder')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full pl-14 pr-6 py-4 text-lg border-2 border-gray-200 rounded-2xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-200 bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-xl"
@@ -136,7 +141,7 @@ const Index = () => {
                 className="absolute right-2 top-2 bottom-2 px-6 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700"
                 onClick={handleSearch}
               >
-                Search
+                {t('search')}
               </Button>
             </div>
           </div>
@@ -161,10 +166,10 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h3 className="text-3xl font-bold text-gray-900 mb-4">
-              Comprehensive Medical Resources
+              {t('comprehensive.medical.resources')}
             </h3>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Access specialized medical knowledge across all critical areas of Army healthcare
+              {t('access.specialized')}
             </p>
           </div>
 
@@ -202,7 +207,7 @@ const Index = () => {
                     {category.description}
                   </p>
                   <div className="flex items-center text-blue-600 font-medium group-hover:text-blue-700 transition-colors">
-                    <span>Explore Resources</span>
+                    <span>{t('explore.resources')}</span>
                     <ArrowRight className="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
@@ -216,15 +221,15 @@ const Index = () => {
       <section className="py-20 bg-gradient-to-r from-gray-900 to-blue-900 relative overflow-hidden">
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=1920&h=600&fit=crop" 
+            src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=1920&h=600&fit=crop&auto=format&q=80" 
             alt="Medical equipment" 
             className="w-full h-full object-cover opacity-10"
           />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center text-white mb-12">
-            <h3 className="text-3xl font-bold mb-4">Quick Access Portal</h3>
-            <p className="text-xl text-blue-200">Navigate directly to critical medical resources</p>
+            <h3 className="text-3xl font-bold mb-4">{t('quick.access.portal')}</h3>
+            <p className="text-xl text-blue-200">{t('navigate.directly')}</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {categories.map((category) => (
@@ -251,15 +256,14 @@ const Index = () => {
             <div className="col-span-1 md:col-span-2">
               <div className="flex items-center space-x-3 mb-4">
                 <Shield className="h-8 w-8 text-blue-400" />
-                <span className="text-xl font-bold">Army Medicine Guide</span>
+                <span className="text-xl font-bold">{t('army.medicine.guide')}</span>
               </div>
               <p className="text-gray-400 max-w-md">
-                Comprehensive medical resource platform designed specifically for 
-                Indian Army medical personnel and emergency response teams.
+                {t('comprehensive.medical.resource')}
               </p>
             </div>
             <div>
-              <h4 className="font-semibold mb-4 text-blue-400">Quick Links</h4>
+              <h4 className="font-semibold mb-4 text-blue-400">{t('quick.links')}</h4>
               <div className="space-y-2">
                 {categories.map((category) => (
                   <Link
@@ -273,16 +277,16 @@ const Index = () => {
               </div>
             </div>
             <div>
-              <h4 className="font-semibold mb-4 text-blue-400">Contact</h4>
+              <h4 className="font-semibold mb-4 text-blue-400">{t('contact')}</h4>
               <div className="space-y-2 text-gray-300">
-                <p>Emergency: 102</p>
-                <p>Support: medical@army.gov.in</p>
+                <p>{t('emergency')}: 102</p>
+                <p>{t('support')}: medical@army.gov.in</p>
                 <p>© 2025 Indian Army Medical Corps</p>
               </div>
             </div>
           </div>
           <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
-            <p>Developed for the Indian Army Medical Corps • Secure • Reliable • Always Available</p>
+            <p>{t('developed.for')}</p>
           </div>
         </div>
       </footer>

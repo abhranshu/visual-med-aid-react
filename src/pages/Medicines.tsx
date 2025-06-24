@@ -7,12 +7,15 @@ import MedicineCard from '../components/MedicineCard';
 import SearchBar from '../components/SearchBar';
 import CategoryFilter from '../components/CategoryFilter';
 import { medicines } from '../data/medicineData';
+import { useLanguage } from '../contexts/LanguageContext';
+import LanguageToggle from '../components/LanguageToggle';
 
 const Medicines = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [showFilters, setShowFilters] = useState(false);
+  const { t } = useLanguage();
 
   const filteredMedicines = medicines.filter(medicine => {
     const matchesSearch = medicine.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -31,7 +34,7 @@ const Medicines = () => {
       <header className="bg-gradient-to-r from-green-600 via-green-500 to-emerald-600 text-white shadow-xl relative overflow-hidden">
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1585435557343-3b092031d4c1?w=1920&h=400&fit=crop" 
+            src="https://images.unsplash.com/photo-1585435557343-3b092031d4c1?w=1920&h=400&fit=crop&auto=format&q=80" 
             alt="Medicine background" 
             className="w-full h-full object-cover opacity-20"
           />
@@ -51,12 +54,13 @@ const Medicines = () => {
                   <Activity className="h-8 w-8" />
                 </div>
                 <div>
-                  <h1 className="text-2xl font-bold">Medicine Database</h1>
-                  <p className="text-green-100 text-sm">Comprehensive Pharmaceutical Reference</p>
+                  <h1 className="text-2xl font-bold">{t('medicine.database.title')}</h1>
+                  <p className="text-green-100 text-sm">{t('pharmaceutical.reference')}</p>
                 </div>
               </div>
             </div>
             <div className="flex items-center space-x-3">
+              <LanguageToggle />
               <Button
                 variant="outline"
                 size="sm"
@@ -78,7 +82,7 @@ const Medicines = () => {
                 className="bg-white/10 border-white/20 text-white hover:bg-white/20"
               >
                 <Filter className="h-4 w-4 mr-2" />
-                Filters
+                {t('filters')}
               </Button>
             </div>
           </div>
@@ -90,20 +94,19 @@ const Medicines = () => {
         <div className="text-center mb-10 relative">
           <div className="absolute inset-0 -z-10">
             <img 
-              src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=1200&h=300&fit=crop" 
+              src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=1200&h=300&fit=crop&auto=format&q=80" 
               alt="Pharmacy background" 
               className="w-full h-48 object-cover rounded-2xl opacity-10"
             />
           </div>
           <div className="inline-flex items-center bg-green-100 text-green-800 text-sm font-medium px-4 py-2 rounded-full mb-4">
-            Updated Database • Last Sync: Today
+            {t('updated.database')}
           </div>
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Army Medicine Database
+            {t('army.medicine.database')}
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Access comprehensive pharmaceutical information including dosages, side effects, 
-            and usage guidelines for military medical applications.
+            {t('access.comprehensive')}
           </p>
         </div>
 
@@ -115,7 +118,7 @@ const Medicines = () => {
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
                 <input
                   type="text"
-                  placeholder="Search medicines by name, generic name, or description..."
+                  placeholder={t('search.medicines')}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="w-full pl-10 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:ring-4 focus:ring-green-100 transition-all duration-200"
@@ -137,11 +140,11 @@ const Medicines = () => {
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center space-x-4">
             <h3 className="text-lg font-semibold text-gray-900">
-              {filteredMedicines.length} {filteredMedicines.length === 1 ? 'Medicine' : 'Medicines'} Found
+              {filteredMedicines.length} {filteredMedicines.length === 1 ? t('medicine.found') : t('medicines.found')}
             </h3>
             {selectedCategory !== 'all' && (
               <span className="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">
-                Category: {selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1)}
+                {t('category')}: {selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1)}
               </span>
             )}
           </div>
@@ -153,9 +156,9 @@ const Medicines = () => {
             <div className="bg-gray-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
               <Activity className="h-10 w-10 text-gray-400" />
             </div>
-            <h3 className="text-2xl font-semibold text-gray-900 mb-2">No medicines found</h3>
+            <h3 className="text-2xl font-semibold text-gray-900 mb-2">{t('no.medicines.found')}</h3>
             <p className="text-gray-600 mb-6 max-w-md mx-auto">
-              Try adjusting your search terms or category filter to find what you're looking for.
+              {t('try.adjusting')}
             </p>
             <Button 
               onClick={() => {
@@ -165,7 +168,7 @@ const Medicines = () => {
               }}
               className="bg-green-600 hover:bg-green-700"
             >
-              Clear All Filters
+              {t('clear.all.filters')}
             </Button>
           </div>
         ) : (
