@@ -283,7 +283,7 @@ const FirstAid = () => {
                     onClick={(e) => {
                       e.stopPropagation();
                       if (procedure.id === 'bone-aid') {
-                        handleBoneAidClick();
+                        window.open('https://medicovid.netlify.app/', '_blank');
                       } else {
                         handleButtonClick();
                       }
