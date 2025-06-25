@@ -37,7 +37,7 @@ const MedicineCard: React.FC<MedicineCardProps> = ({ medicine, viewMode = 'grid'
       case 'painkiller':
         return 'https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=400&h=200&fit=crop&auto=format';
       case 'antibiotic':
-        return 'https://images.unsplash.com/photo-1585435557343-3b092031d4c1?w=400&h=200&fit=crop&auto=format';
+        return 'https://c8.alamy.com/comp/2KM4BX8/amoxicillin-capsules-penicillin-based-antibiotic-for-treating-infections-2KM4BX8.jpg';
       case 'vitamin':
         return 'https://images.unsplash.com/photo-1550572017-edd951b55104?w=400&h=200&fit=crop&auto=format';
       case 'antacid':

@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { useLanguage } from '../contexts/LanguageContext';
 import LanguageToggle from '../components/LanguageToggle';
 import { medicines } from '../data/medicineData';
+import logo from '../logo.png';
 
 const Index = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -83,7 +84,7 @@ const Index = () => {
           <img 
             src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1920&h=600&fit=crop&auto=format&q=90" 
             alt="Medical background" 
-            className="w-full h-full object-cover opacity-30"
+            className="w-full h-full object-cover opacity-500"
           />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -92,7 +93,7 @@ const Index = () => {
               <img 
                 src="/lovable-uploads/5f55752e-fd69-47ce-9791-2c559f7ce1be.png" 
                 alt="Army Medical Corps Logo" 
-                className="h-20 w-20 object-contain"
+                className="h-28 w-28 object-contain"
                 onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/placeholder.svg'; }}
               />
               <div className="bg-white/10 backdrop-blur-sm p-3 rounded-2xl border border-white/20">
@@ -320,6 +321,7 @@ const Index = () => {
             </div>
           </div>
           <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
+            <img src={logo} alt="Logo" className="h-28 w-28 mx-auto mb-4 rounded-full shadow-lg bg-white object-contain" />
             <p>{t('developed.for')}</p>
           </div>
         </div>

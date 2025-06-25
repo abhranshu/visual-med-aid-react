@@ -146,7 +146,8 @@ const translations = {
     'assess.airway': 'Assess airway',
     'back.blows': 'Back blows',
     'abdominal.thrusts': 'Abdominal thrusts',
-    'check.mouth': 'Check mouth'
+    'check.mouth': 'Check mouth',
+    'bone.aid': 'Bone Aid'
   },
   hi: {
     // Header
@@ -283,7 +284,8 @@ const translations = {
     'assess.airway': 'वायुमार्ग का मूल्यांकन',
     'back.blows': 'पीठ पर मारना',
     'abdominal.thrusts': 'पेट पर दबाव',
-    'check.mouth': 'मुंह की जांच करें'
+    'check.mouth': 'मुंह की जांच करें',
+    'bone.aid': 'हड्डी की देखभाल'
   }
 };
 

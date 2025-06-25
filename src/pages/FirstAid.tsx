@@ -226,7 +226,7 @@ const FirstAid = () => {
                   alt={procedure.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                 />
-                <div className={`absolute inset-0 bg-gradient-to-t ${getUrgencyColor(procedure.urgency)} opacity-60`}></div>
+                <div className={`absolute inset-0 bg-gradient-to-t ${getUrgencyColor(procedure.urgency)} opacity-0`}></div>
                 <div className="absolute top-4 left-4">
                   <div className={`px-3 py-1 rounded-full text-xs font-medium border bg-white/90 ${getUrgencyBadge(procedure.urgency)}`}>
                     {procedure.urgency.toUpperCase()}
