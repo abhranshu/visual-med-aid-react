@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { AlertTriangle, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -88,29 +87,33 @@ const Emergency = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 border border-gray-100 border-l-4 border-l-red-500 group">
-            <div className="bg-red-100 p-4 rounded-xl mb-6 group-hover:bg-red-200 transition-colors">
-              <AlertTriangle className="h-8 w-8 text-red-600" />
+          <Link to="/trauma-assessment" style={{ textDecoration: 'none' }}>
+            <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 border border-gray-100 border-l-4 border-l-red-500 group cursor-pointer">
+              <div className="bg-red-100 p-4 rounded-xl mb-6 group-hover:bg-red-200 transition-colors">
+                <AlertTriangle className="h-8 w-8 text-red-600" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-gray-900">{t('trauma.assessment')}</h3>
+              <p className="text-gray-600 leading-relaxed">{t('trauma.desc')}</p>
             </div>
-            <h3 className="text-xl font-semibold mb-3 text-gray-900">{t('trauma.assessment')}</h3>
-            <p className="text-gray-600 leading-relaxed">{t('trauma.desc')}</p>
-          </div>
-          
-          <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 border border-gray-100 border-l-4 border-l-red-500 group">
-            <div className="bg-red-100 p-4 rounded-xl mb-6 group-hover:bg-red-200 transition-colors">
-              <AlertTriangle className="h-8 w-8 text-red-600" />
+          </Link>
+          <Link to="/mass-casualty" style={{ textDecoration: 'none' }}>
+            <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 border border-gray-100 border-l-4 border-l-red-500 group cursor-pointer">
+              <div className="bg-red-100 p-4 rounded-xl mb-6 group-hover:bg-red-200 transition-colors">
+                <AlertTriangle className="h-8 w-8 text-red-600" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-gray-900">{t('mass.casualty')}</h3>
+              <p className="text-gray-600 leading-relaxed">{t('mass.casualty.desc')}</p>
             </div>
-            <h3 className="text-xl font-semibold mb-3 text-gray-900">{t('mass.casualty')}</h3>
-            <p className="text-gray-600 leading-relaxed">{t('mass.casualty.desc')}</p>
-          </div>
-          
-          <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 border border-gray-100 border-l-4 border-l-red-500 group">
-            <div className="bg-red-100 p-4 rounded-xl mb-6 group-hover:bg-red-200 transition-colors">
-              <AlertTriangle className="h-8 w-8 text-red-600" />
+          </Link>
+          <Link to="/combat-medicine" style={{ textDecoration: 'none' }}>
+            <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 border border-gray-100 border-l-4 border-l-red-500 group cursor-pointer">
+              <div className="bg-red-100 p-4 rounded-xl mb-6 group-hover:bg-red-200 transition-colors">
+                <AlertTriangle className="h-8 w-8 text-red-600" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-gray-900">{t('combat.medicine')}</h3>
+              <p className="text-gray-600 leading-relaxed">{t('combat.medicine.desc')}</p>
             </div>
-            <h3 className="text-xl font-semibold mb-3 text-gray-900">{t('combat.medicine')}</h3>
-            <p className="text-gray-600 leading-relaxed">{t('combat.medicine.desc')}</p>
-          </div>
+          </Link>
         </div>
       </div>
     </div>

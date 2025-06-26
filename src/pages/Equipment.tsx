@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Stethoscope, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -88,29 +87,33 @@ const Equipment = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 border border-gray-100 group">
-            <div className="bg-orange-100 p-4 rounded-xl mb-6 group-hover:bg-orange-200 transition-colors">
-              <Stethoscope className="h-8 w-8 text-orange-600" />
+          <Link to="/diagnostic-tools" style={{ textDecoration: 'none' }}>
+            <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 border border-gray-100 group cursor-pointer">
+              <div className="bg-orange-100 p-4 rounded-xl mb-6 group-hover:bg-orange-200 transition-colors">
+                <Stethoscope className="h-8 w-8 text-orange-600" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-gray-900">{t('diagnostic.tools')}</h3>
+              <p className="text-gray-600 leading-relaxed">{t('diagnostic.desc')}</p>
             </div>
-            <h3 className="text-xl font-semibold mb-3 text-gray-900">{t('diagnostic.tools')}</h3>
-            <p className="text-gray-600 leading-relaxed">{t('diagnostic.desc')}</p>
-          </div>
-          
-          <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 border border-gray-100 group">
-            <div className="bg-orange-100 p-4 rounded-xl mb-6 group-hover:bg-orange-200 transition-colors">
-              <Stethoscope className="h-8 w-8 text-orange-600" />
+          </Link>
+          <Link to="/surgical-instruments" style={{ textDecoration: 'none' }}>
+            <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 border border-gray-100 group cursor-pointer">
+              <div className="bg-orange-100 p-4 rounded-xl mb-6 group-hover:bg-orange-200 transition-colors">
+                <Stethoscope className="h-8 w-8 text-orange-600" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-gray-900">{t('surgical.instruments')}</h3>
+              <p className="text-gray-600 leading-relaxed">{t('surgical.desc')}</p>
             </div>
-            <h3 className="text-xl font-semibold mb-3 text-gray-900">{t('surgical.instruments')}</h3>
-            <p className="text-gray-600 leading-relaxed">{t('surgical.desc')}</p>
-          </div>
-          
-          <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 border border-gray-100 group">
-            <div className="bg-orange-100 p-4 rounded-xl mb-6 group-hover:bg-orange-200 transition-colors">
-              <Stethoscope className="h-8 w-8 text-orange-600" />
+          </Link>
+          <Link to="/emergency-equipment" style={{ textDecoration: 'none' }}>
+            <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 border border-gray-100 group cursor-pointer">
+              <div className="bg-orange-100 p-4 rounded-xl mb-6 group-hover:bg-orange-200 transition-colors">
+                <Stethoscope className="h-8 w-8 text-orange-600" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-gray-900">{t('emergency.equipment')}</h3>
+              <p className="text-gray-600 leading-relaxed">{t('emergency.equipment.desc')}</p>
             </div>
-            <h3 className="text-xl font-semibold mb-3 text-gray-900">{t('emergency.equipment')}</h3>
-            <p className="text-gray-600 leading-relaxed">{t('emergency.equipment.desc')}</p>
-          </div>
+          </Link>
         </div>
       </div>
     </div>

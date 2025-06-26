@@ -214,87 +214,99 @@ const FirstAid = () => {
 
         {/* Procedures Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {procedures.map((procedure) => (
-            <div
-              key={procedure.id}
-              className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden group cursor-pointer"
-              onClick={() => handleProcedureClick(procedure.id)}
-            >
-              <div className="relative h-48">
-                <img 
-                  src={procedure.image} 
-                  alt={procedure.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                />
-                <div className={`absolute inset-0 bg-gradient-to-t ${getUrgencyColor(procedure.urgency)} opacity-0`}></div>
-                <div className="absolute top-4 left-4">
-                  <div className={`px-3 py-1 rounded-full text-xs font-medium border bg-white/90 ${getUrgencyBadge(procedure.urgency)}`}>
-                    {procedure.urgency.toUpperCase()}
+          {procedures.map((procedure) => {
+            let linkTo = undefined;
+            if (procedure.id === 'cpr') linkTo = '/cpr';
+            if (procedure.id === 'wound-care') linkTo = '/wound-care';
+            if (procedure.id === 'shock') linkTo = '/shock';
+            if (procedure.id === 'burns') linkTo = '/burns';
+            if (procedure.id === 'choking') linkTo = '/choking';
+            // For bone-aid, keep the special external link on the button only
+            const CardContent = (
+              <div
+                key={procedure.id}
+                className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden group cursor-pointer"
+                onClick={() => handleProcedureClick(procedure.id)}
+              >
+                <div className="relative h-48">
+                  <img 
+                    src={procedure.image} 
+                    alt={procedure.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-t ${getUrgencyColor(procedure.urgency)} opacity-0`}></div>
+                  <div className="absolute top-4 left-4">
+                    <div className={`px-3 py-1 rounded-full text-xs font-medium border bg-white/90 ${getUrgencyBadge(procedure.urgency)}`}>{procedure.urgency.toUpperCase()}</div>
+                  </div>
+                  <div className="absolute top-4 right-4">
+                    <div className="text-sm text-white bg-black/30 backdrop-blur-sm px-3 py-1 rounded-full flex items-center">
+                      <Clock className="h-4 w-4 mr-1" />
+                      {procedure.time}
+                    </div>
                   </div>
                 </div>
-                <div className="absolute top-4 right-4">
-                  <div className="text-sm text-white bg-black/30 backdrop-blur-sm px-3 py-1 rounded-full flex items-center">
-                    <Clock className="h-4 w-4 mr-1" />
-                    {procedure.time}
-                  </div>
-                </div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors">
-                  {procedure.title}
-                </h3>
-                {procedure.id === 'bone-aid' ? (
-                  <>
-                    <p className="text-sm text-gray-700 mb-2 font-medium">
-                      Bone Aid is your trusted companion for fracture care and bone injury recovery
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors">
+                    {procedure.title}
+                  </h3>
+                  {procedure.id === 'bone-aid' ? (
+                    <>
+                      <p className="text-sm text-gray-700 mb-2 font-medium">
+                        Bone Aid is your trusted companion for fracture care and bone injury recovery
+                      </p>
+                      <p className="mb-4 leading-relaxed text-black font-normal"></p>
+                    </>
+                  ) : (
+                    <p className="text-gray-600 mb-4 leading-relaxed">
+                      {procedure.description}
                     </p>
-                    <p className="mb-4 leading-relaxed text-black font-normal"></p>
-                  </>
-                ) : (
-                  <p className="text-gray-600 mb-4 leading-relaxed">
-                    {procedure.description}
-                  </p>
-                )}
-                
-                <div className="space-y-2 mb-4">
-                  <div className="text-sm font-medium text-gray-700">{t('quick.steps') || 'Quick Steps'}:</div>
-                  {procedure.steps.slice(0, 2).map((step, index) => (
-                    <div key={index} className="flex items-start space-x-2">
-                      <div className="bg-red-100 text-red-600 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold mt-0.5">
-                        {index + 1}
-                      </div>
-                      <div className="text-sm text-gray-600">{step}</div>
-                    </div>
-                  ))}
-                  {procedure.steps.length > 2 && (
-                    <div className="text-xs text-gray-500 pl-7">
-                      +{procedure.steps.length - 2} {t('more.steps') || 'more steps'}
-                    </div>
                   )}
-                </div>
-                
-                <div className="flex items-center justify-between">
-                  <span className="bg-gray-100 text-gray-700 text-xs font-medium px-2 py-1 rounded">
-                    {procedure.category}
-                  </span>
-                  <Button 
-                    size="sm" 
-                    className="bg-red-600 hover:bg-red-700 text-white"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      if (procedure.id === 'bone-aid') {
-                        window.open('https://medicovid.netlify.app/', '_blank');
-                      } else {
-                        handleButtonClick();
-                      }
-                    }}
-                  >
-                    {t('view.full.guide') || 'View Full Guide'}
-                  </Button>
+                  <div className="space-y-2 mb-4">
+                    <div className="text-sm font-medium text-gray-700">{t('quick.steps') || 'Quick Steps'}:</div>
+                    {procedure.steps.slice(0, 2).map((step, index) => (
+                      <div key={index} className="flex items-start space-x-2">
+                        <div className="bg-red-100 text-red-600 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold mt-0.5">
+                          {index + 1}
+                        </div>
+                        <div className="text-sm text-gray-600">{step}</div>
+                      </div>
+                    ))}
+                    {procedure.steps.length > 2 && (
+                      <div className="text-xs text-gray-500 pl-7">
+                        +{procedure.steps.length - 2} {t('more.steps') || 'more steps'}
+                      </div>
+                    )}
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="bg-gray-100 text-gray-700 text-xs font-medium px-2 py-1 rounded">
+                      {procedure.category}
+                    </span>
+                    <Button 
+                      size="sm" 
+                      className="bg-red-600 hover:bg-red-700 text-white"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (procedure.id === 'bone-aid') {
+                          window.open('https://medicovid.netlify.app/', '_blank');
+                        } else if (linkTo) {
+                          window.location.href = linkTo;
+                        } else {
+                          handleButtonClick();
+                        }
+                      }}
+                    >
+                      {t('view.full.guide') || 'View Full Guide'}
+                    </Button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+            return linkTo && procedure.id !== 'bone-aid' ? (
+              <Link to={linkTo} key={procedure.id} style={{ textDecoration: 'none' }}>
+                {CardContent}
+              </Link>
+            ) : CardContent;
+          })}
         </div>
 
         {/* Emergency Contact Card */}
